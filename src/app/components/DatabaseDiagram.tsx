@@ -34,10 +34,10 @@ const graphData = {
 };
 
 export default function DatabaseDiagram() {
-    const fgRef = useRef<any>();
+    const fgRef = useRef<unknown>(null);
 
     useEffect(() => {
-        const fg = fgRef.current;
+        const fg = fgRef.current as { d3Force: (name: string, force: null) => void } | null;
         if (fg) {
             fg.d3Force('center', null);
         }
@@ -87,17 +87,19 @@ export default function DatabaseDiagram() {
                         ctx.fillText(col, node.x! - nodeWidth / 2 + 8, node.y! - nodeHeight / 2 + headerHeight + 8 + (i * lineHeight));
                     });
                 }}
-                onNodeDragEnd={(node: any) => {
-                    node.fx = node.x;
-                    node.fy = node.y;
+                onNodeDragEnd={(node) => {
+                    const n = node as NodeObject;
+                    n.fx = n.x;
+                    n.fy = n.y;
                 }}
-                nodePointerAreaPaint={(node: any, color, ctx) => {
+                nodePointerAreaPaint={(node, color, ctx) => {
+                    const n = node as NodeObject;
                     const nodeWidth = 160;
                     const headerHeight = 28;
                     const lineHeight = 16;
-                    const nodeHeight = headerHeight + ((node.columns || []).length * lineHeight) + 8;
+                    const nodeHeight = headerHeight + ((n.columns || []).length * lineHeight) + 8;
                     ctx.fillStyle = color;
-                    ctx.fillRect(node.x! - nodeWidth / 2, node.y! - nodeHeight / 2, nodeWidth, nodeHeight);
+                    ctx.fillRect(n.x! - nodeWidth / 2, n.y! - nodeHeight / 2, nodeWidth, nodeHeight);
                 }}
                 linkDirectionalArrowLength={3.5}
                 linkDirectionalArrowRelPos={1}

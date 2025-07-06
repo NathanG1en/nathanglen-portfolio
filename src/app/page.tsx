@@ -184,13 +184,13 @@ export default function HomePage() {
           </h2>
           <div className="text-lg text-gray-700 text-left bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/50">
             <p className="mb-4">
-              <span className="font-semibold text-gray-800">bio:</span> "I'm a Data Science student at the University of Florida with a minor in Economics, graduating in 2026."
+              <span className="font-semibold text-gray-800">bio:</span> &quot;I&apos;m a Data Science student at the University of Florida with a minor in Economics, graduating in 2026.&quot;
             </p>
             <p className="mb-4">
-              <span className="font-semibold text-gray-800">experience:</span> "I have experience in data analysis and basic applications of data science. I'm currently an AI Scholar and a member of the Graim Lab, studying bioinformatics!"
+              <span className="font-semibold text-gray-800">experience:</span> &quot;I have experience in data analysis and basic applications of data science. I&apos;m currently an AI Scholar and a member of the Graim Lab, studying bioinformatics!&quot;
             </p>
             <p>
-              <span className="font-semibold text-gray-800">goal:</span> "I love working with data, and am looking to apply my toolkit to real problems!"
+              <span className="font-semibold text-gray-800">goal:</span> &quot;I love working with data, and am looking to apply my toolkit to real problems!&quot;
             </p>
           </div>
           <a

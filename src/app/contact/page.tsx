@@ -8,7 +8,7 @@ export default function ContactPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold mb-4">Get in Touch</h1>
           <p className="text-lg text-gray-600">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team.
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team.
           </p>
         </div>
         
