@@ -2,6 +2,7 @@
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import Image from "next/image";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -51,11 +52,14 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                 <p className="text-sm text-gray-700 mb-4">{project.description}</p>
 
                 {project.image && (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="rounded mb-4"
-                  />
+                  <div className="relative w-full h-64 mb-4">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="rounded object-cover"
+                    />
+                  </div>
                 )}
 
                 <div className="flex flex-wrap gap-4 mt-4">

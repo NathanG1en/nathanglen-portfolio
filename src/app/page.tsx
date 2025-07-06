@@ -128,7 +128,7 @@ export default function HomePage() {
             className="text-2xl md:text-3xl font-mono text-blue-200 mb-4 block cursor-pointer transition-colors hover:text-blue-100"
             onClick={() => setShowSqlHero(!showSqlHero)}
           >
-            {showSqlHero ? "SELECT name, title, interests FROM" : "Welcome to my website! I'm"}
+            {showSqlHero ? "SELECT name, title, interests FROM nathan_glen;" : "Nathan Glen, Student & Developer"}
           </code>
           <h1 className="text-5xl font-extrabold mb-4 text-white">Nathan Glen</h1>
           <p className="text-xl text-gray-200 mb-8 h-8">
@@ -216,7 +216,7 @@ export default function HomePage() {
                     <span className="text-blue-600 hover:text-blue-800">DESCRIBE</span> nathans_stuff;
                 </>
                 ) : (
-                <span className="text-gray-900 hover:text-blue-600">My Website's Schema</span>
+                <span className="text-gray-900 hover:text-blue-600">My Website&apos;s Schema</span>
                 )}
             </h2>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-4">

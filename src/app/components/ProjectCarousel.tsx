@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useState } from "react";
 import ProjectModal from "./ProjectModal";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -120,10 +121,11 @@ export default function ProjectCarousel() {
               >
                 <div className="h-48 bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
                   {proj.image && (
-                    <img
+                    <Image
                       src={proj.image}
                       alt={proj.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -34,7 +34,8 @@ const graphData = {
 };
 
 export default function DatabaseDiagram() {
-    const fgRef = useRef<unknown>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const fgRef = useRef<any>(null);
 
     useEffect(() => {
         const fg = fgRef.current as { d3Force: (name: string, force: null) => void } | null;
