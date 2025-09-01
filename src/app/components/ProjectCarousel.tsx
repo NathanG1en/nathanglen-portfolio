@@ -16,8 +16,24 @@ const projects = [
     image: "/images/swamp_subleasing.png",
   },
   {
-    title: "Nutrition Label Generator",
+    title: "UF Food Product Development Website",
     description:
+      "A comprehensive website for UF's Food Product Development program, showcasing research, courses, and student projects.",
+    tech: ["React", "Node.js", "MongoDB"],
+    liveUrl: "https://www.uf-fpdc.org/",
+    image: "/images/fpdc-website.png",
+  },
+  {
+    title: "Nutrition Label Maker",
+    description:
+      "An AI assisted nutrition label maker that pulls from USDA database to create nutrition labels with Pillow. Uses fuzzymatching and a BERT language model to semantically find items from the database (WIP).",
+    tech: ["Python", "BERT", "Pillow", "USDA API", "Fuzzy Matching"],
+    link: "https://github.com/NathanG1en/NutritionLabelMaker",
+    image: "/images/nutrition-label.png",
+  },
+  {
+    title: "Smart-Snacks Compliance Tool",
+    description:  
       "Web app that generates USDA-compliant nutrition labels using the Edamam API.",
     tech: ["Streamlit", "Python", "API"],
     link: "https://github.com/NathanG1en/Food",
@@ -42,7 +58,7 @@ const projects = [
     description:
       "Built for a Linear Algebra course using restaurant Google reviews. Compared multiple models for sentiment classification.",
     tech: ["NLP", "Scikit-learn", "Linear Algebra"],
-    link: "#",
+    pdf:"/RestaurantReviews.pdf",
     image: "/images/text_sentiment.png",
   },
   {
@@ -77,7 +93,7 @@ const projects = [
       "RAG-based chatbot for housing and conservation research, using Langchain, PyPDF2, and Streamlit.",
     tech: ["LangChain", "Streamlit", "RAG"],
     // link: "#",
-    image: "images/ResearchPoster.jpg",
+    image: "/images/ResearchPoster.jpg",
   },
 ];
 
