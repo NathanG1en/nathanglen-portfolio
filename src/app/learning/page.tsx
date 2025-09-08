@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LearningPage() {
   const [showSqlTitle, setShowSqlTitle] = useState(false);
@@ -183,7 +184,7 @@ export default function LearningPage() {
                 
                 <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 hover:shadow-md transition-shadow">
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items=center justify-center mx-auto mb-3">
                       <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"/>
                       </svg>
@@ -206,12 +207,12 @@ export default function LearningPage() {
 
         {/* Back to Home */}
         <div className="text-center mt-16">
-          <a
+          <Link
             href="/"
             className="inline-block bg-gradient-to-r from-gray-600 to-gray-800 text-white px-8 py-4 rounded-xl font-medium hover:from-gray-700 hover:to-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             ← Back to Portfolio
-          </a>
+          </Link>
         </div>
       </div>
     </main>
