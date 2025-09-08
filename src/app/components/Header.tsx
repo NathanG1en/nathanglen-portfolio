@@ -20,9 +20,11 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: '#hero', label: 'Home' },
+    { href: '/#hero', label: 'Home' },
     { href: '/#about', label: 'About' },
     { href: '/#projects', label: 'Projects' },
+    { href: '/research', label: 'Research' },
+    { href: '/learning', label: 'Coursework' },
     { href: '/contact', label: 'Contact' },
   ];
 

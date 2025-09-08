@@ -25,11 +25,15 @@ const graphData = {
         { id: 'about', label: 'about_me', type: 'Table', columns: ['bio: TEXT', 'experience: TEXT', 'goal: TEXT'] },
         { id: 'projects', label: 'projects', type: 'Table', columns: ['title: VARCHAR', 'description: TEXT', 'tech: TEXT[]'] },
         { id: 'contact', label: 'contact_form', type: 'Table', columns: ['name: VARCHAR', 'email: VARCHAR', 'message: TEXT'] },
+        { id: 'research', label: 'research', type: 'Table', columns: ['title: VARCHAR', 'pi: VARCHAR', 'dept: VARCHAR'] },
+        { id: 'coursework', label: 'coursework', type: 'Table', columns: ['course_code: VARCHAR', 'course_name: TEXT'] },
     ] as NodeObject[],
     links: [
         { source: 'db', target: 'about', label: 'SELECT' },
         { source: 'db', target: 'projects', label: 'SELECT' },
         { source: 'db', target: 'contact', label: 'INSERT' },
+        { source: 'db', target: 'research', label: 'SELECT' },
+        { source: 'db', target: 'coursework', label: 'SELECT' },
     ],
 };
 
@@ -38,9 +42,14 @@ export default function DatabaseDiagram() {
     const fgRef = useRef<any>(null);
 
     useEffect(() => {
-        const fg = fgRef.current as { d3Force: (name: string, force: null) => void } | null;
+        const fg = fgRef.current as { d3Force: (name: string, force: null) => void; zoomToFit: (ms?: number, px?: number) => void } | null;
         if (fg) {
+            // keep center force disabled (no rubber-band)
             fg.d3Force('center', null);
+            // center and fit all nodes on initial render
+            requestAnimationFrame(() => {
+              fg.zoomToFit(400, 60);
+            });
         }
     }, []);
 
