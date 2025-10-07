@@ -20,8 +20,53 @@ export type NotionQueryOptions = {
   sorts?: Array<Record<string, unknown>>;
 };
 
+// Notion API types
+export interface NotionPage {
+  id: string;
+  properties: Record<string, NotionProperty>;
+}
+
+export interface NotionProperty {
+  title?: NotionTitleProperty;
+  rich_text?: NotionRichTextProperty[];
+  url?: NotionUrlProperty;
+  files?: NotionFileProperty[];
+  multi_select?: NotionMultiSelectProperty[];
+  select?: NotionSelectProperty;
+  date?: NotionDateProperty;
+}
+
+export interface NotionTitleProperty {
+  title: NotionRichTextProperty[];
+}
+
+export interface NotionRichTextProperty {
+  plain_text: string;
+}
+
+export interface NotionUrlProperty {
+  url: string;
+}
+
+export interface NotionFileProperty {
+  external?: { url: string };
+  file?: { url: string };
+}
+
+export interface NotionMultiSelectProperty {
+  name: string;
+}
+
+export interface NotionSelectProperty {
+  name: string;
+}
+
+export interface NotionDateProperty {
+  start: string;
+}
+
 export type NotionQueryResult = {
-  results: any[];
+  results: NotionPage[];
   nextCursor?: string | null;
   hasMore: boolean;
 };
@@ -43,7 +88,7 @@ export async function queryDatabase({
     start_cursor: startCursor,
     filter,
     sorts,
-  } as any);
+  });
 
   return {
     results: resp.results,
@@ -89,42 +134,42 @@ const DEFAULT_PROPS: Required<ConsumptionPropertyMap> = {
 /**
  * Safely get plain text from a Notion rich_text array.
  */
-function getRichText(prop: any): string {
+function getRichText(prop: NotionProperty): string {
   if (!prop || !Array.isArray(prop.rich_text)) return "";
-  return prop.rich_text.map((t: any) => t.plain_text ?? "").join("").trim();
+  return prop.rich_text.map((t) => t.plain_text ?? "").join("").trim();
 }
 
-function getTitle(prop: any): string {
+function getTitle(prop: NotionProperty): string {
   if (!prop || !Array.isArray(prop.title)) return "";
-  return prop.title.map((t: any) => t.plain_text ?? "").join("").trim();
+  return prop.title.map((t) => t.plain_text ?? "").join("").trim();
 }
 
-function getUrl(prop: any): string | undefined {
+function getUrl(prop: NotionProperty): string | undefined {
   if (!prop) return undefined;
-  if (typeof prop.url === "string" && prop.url.length > 0) return prop.url;
+  if (prop.url && typeof prop.url === "string" && prop.url.length > 0) return prop.url;
   // files (first item only)
   if (Array.isArray(prop.files) && prop.files.length > 0) {
     const f = prop.files[0];
-    if (f?.external?.url) return f.external.url as string;
-    if (f?.file?.url) return f.file.url as string;
+    if (f?.external?.url) return f.external.url;
+    if (f?.file?.url) return f.file.url;
   }
   return undefined;
 }
 
-function getMultiSelect(prop: any): string[] {
+function getMultiSelect(prop: NotionProperty): string[] {
   if (!prop || !Array.isArray(prop.multi_select)) return [];
-  return prop.multi_select.map((o: any) => o?.name).filter(Boolean);
+  return prop.multi_select.map((o) => o?.name).filter(Boolean);
 }
 
-function getSelectOrText(prop: any): string | undefined {
+function getSelectOrText(prop: NotionProperty): string | undefined {
   if (!prop) return undefined;
-  if (prop.select?.name) return prop.select.name as string;
+  if (prop.select?.name) return prop.select.name;
   const txt = getRichText(prop);
   return txt || undefined;
 }
 
-function getDate(prop: any): string | undefined {
-  const v = prop?.date?.start as string | undefined;
+function getDate(prop: NotionProperty): string | undefined {
+  const v = prop?.date?.start;
   return v || undefined;
 }
 
@@ -132,7 +177,7 @@ function getDate(prop: any): string | undefined {
  * Map a Notion Page to your ConsumptionEntry using a property name map.
  */
 export function mapConsumptionPage(
-  page: any,
+  page: NotionPage,
   propMap: ConsumptionPropertyMap = {}
 ): ConsumptionEntry {
   const p = { ...DEFAULT_PROPS, ...propMap };
