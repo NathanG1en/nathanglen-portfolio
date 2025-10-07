@@ -8,11 +8,11 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "SwampSubleasing",
+    title: "GatorSubleasing",
     description:
-      "A full-stack website for students to find and sublease apartments, built with Supabase and Next.js.",
+      " Previously known as SwampSubleasing, a full-stack website for students to find and sublease apartments, built with Supabase and Next.js.",
     tech: ["Next.js", "Supabase", "Tailwind"],
-    liveUrl: "https://www.swampsubleasing.com/",
+    liveUrl: "https://www.gatorsubleasing.com/",
     image: "/images/swamp_subleasing.png",
   },
   {
