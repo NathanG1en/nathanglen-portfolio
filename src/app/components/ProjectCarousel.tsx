@@ -28,7 +28,7 @@ const projects = [
     description:
       "An AI assisted nutrition label maker that pulls from USDA database to create nutrition labels with Pillow. Uses fuzzymatching and a BERT language model to semantically find items from the database (WIP).",
     tech: ["Python", "BERT", "Pillow", "USDA API", "Fuzzy Matching"],
-    link: "https://github.com/NathanG1en/NutritionLabelMaker",
+    link: "https://github.com/NathanG1en/NutriBuddy",
     image: "/images/nutrition-label.png",
   },
   {
