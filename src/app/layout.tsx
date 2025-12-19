@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Header from "@/app/components/Header";
+import { ensureLocalStorageShim } from "@/lib/safeStorage";
+
+ensureLocalStorageShim();
 
 export const metadata: Metadata = {
   title: "Nathan Glen's Portfolio",

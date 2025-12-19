@@ -30,15 +30,14 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-gray-900/90 shadow-lg backdrop-blur-md border-b border-gray-800/50' 
-          : 'bg-gray-900/70 backdrop-blur-sm'
-      }`}
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${isScrolled
+          ? 'bg-neo-black shadow-neo-lg py-2 border-b-3 border-white'
+          : 'bg-neo-black py-4 border-b-3 border-neo-black'
+        }`}
     >
-      <nav className="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="max-w-screen-xl mx-auto px-6 flex justify-between items-center">
         <Link href="/">
-          <span className="text-xl font-bold cursor-pointer text-white hover:text-blue-300 transition-colors">
+          <span className="text-xl font-black cursor-pointer text-neo-green hover:text-white transition-colors uppercase tracking-widest border-2 border-transparent hover:border-white px-2">
             Nathan Glen
           </span>
         </Link>
@@ -47,10 +46,10 @@ const Header = () => {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-gray-300 hover:text-white transition-colors font-medium relative group"
+                className="text-white hover:text-neo-yellow transition-colors font-bold uppercase tracking-wider text-sm relative group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-1 bg-neo-yellow transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
           ))}

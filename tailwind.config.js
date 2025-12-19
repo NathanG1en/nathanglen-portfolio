@@ -7,6 +7,25 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        neo: {
+          cream: '#EBE9D6',
+          green: '#89C978',
+          yellow: '#FDD835',
+          red: '#FF6B6B',
+          blue: '#4ECDC4',
+          black: '#121212',
+          white: '#ffffff',
+        }
+      },
+      boxShadow: {
+        'neo': '5px 5px 0px 0px #000000',
+        'neo-sm': '3px 3px 0px 0px #000000',
+        'neo-lg': '8px 8px 0px 0px #000000',
+      },
+      borderWidth: {
+        '3': '3px',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

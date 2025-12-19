@@ -33,7 +33,7 @@ const projects = [
   },
   {
     title: "Smart-Snacks Compliance Tool",
-    description:  
+    description:
       "Web app that generates USDA-compliant nutrition labels using the Edamam API.",
     tech: ["Streamlit", "Python", "API"],
     link: "https://github.com/NathanG1en/Food",
@@ -58,7 +58,7 @@ const projects = [
     description:
       "Built for a Linear Algebra course using restaurant Google reviews. Compared multiple models for sentiment classification.",
     tech: ["NLP", "Scikit-learn", "Linear Algebra"],
-    pdf:"/RestaurantReviews.pdf",
+    pdf: "/RestaurantReviews.pdf",
     image: "/images/text_sentiment.png",
   },
   {
@@ -112,61 +112,58 @@ export default function ProjectCarousel() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden py-16 bg-gradient-to-br from-gray-50 to-white">
+    <div className="relative w-full overflow-hidden py-16 bg-neo-green border-t-3 border-neo-black">
       <h2
-        className="text-3xl font-bold text-center mb-12 font-mono cursor-pointer transition-colors"
+        className="text-4xl font-black text-center mb-12 inline-block mx-auto table bg-white px-6 py-3 border-3 border-neo-black shadow-neo transform rotate-1 cursor-pointer hover:rotate-0 transition-transform"
         onClick={() => setShowSql(!showSql)}
       >
         {showSql ? (
-          <>
-            <span className="text-blue-600 hover:text-blue-800">SELECT</span> * <span className="text-blue-600 hover:text-blue-800">FROM</span> projects;
-          </>
+          <span className="font-mono text-xl">SELECT * FROM projects;</span>
         ) : (
-          <span className="text-gray-900 hover:text-blue-600">Projects</span>
+          "Projects"
         )}
       </h2>
 
       <div className="relative max-w-7xl mx-auto px-4">
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-8">
+          <div className="flex gap-8 py-4 px-2">
             {projects.map((proj, idx) => (
               <div
                 key={idx}
                 onClick={() => openModal(proj)}
-                className="cursor-pointer flex-shrink-0 w-[350px] bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group"
+                className="cursor-pointer flex-shrink-0 w-[350px] bg-white border-3 border-neo-black shadow-neo hover:shadow-neo-lg transition-all duration-300 transform hover:-translate-y-2 group"
               >
-                <div className="h-48 bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
+                <div className="h-48 bg-neo-blue relative overflow-hidden border-b-3 border-neo-black">
                   {proj.image && (
                     <Image
                       src={proj.image}
                       alt={proj.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300 grayscale group-hover:grayscale-0"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                
+
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-black mb-3 text-neo-black uppercase tracking-tight group-hover:text-neo-blue transition-colors">
                     {proj.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  <p className="text-neo-black mb-4 text-sm font-medium leading-relaxed">
                     {proj.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {proj.tech.map((tech, techIdx) => (
                       <span
                         key={techIdx}
-                        className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 text-xs px-3 py-1 rounded-full font-medium border border-blue-200"
+                        className="bg-neo-yellow text-neo-black text-xs px-3 py-1 font-bold border-2 border-neo-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center text-blue-600 text-sm font-medium group-hover:text-blue-700 transition-colors">
+                  <div className="flex items-center text-neo-black text-sm font-bold group-hover:underline decoration-2">
                     <span>Click to learn more</span>
-                    <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight size={18} strokeWidth={3} className="ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </div>
@@ -176,15 +173,15 @@ export default function ProjectCarousel() {
 
         <button
           onClick={scrollPrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border border-gray-200 p-3 rounded-full shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 -ml-6"
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white border-3 border-neo-black p-3 shadow-neo hover:shadow-neo-sm active:translate-y-1 active:shadow-none transition-all duration-200 -ml-4 z-10"
         >
-          <ChevronLeft size={20} className="text-gray-700" />
+          <ChevronLeft size={24} strokeWidth={3} className="text-neo-black" />
         </button>
         <button
           onClick={scrollNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border border-gray-200 p-3 rounded-full shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 -mr-6"
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white border-3 border-neo-black p-3 shadow-neo hover:shadow-neo-sm active:translate-y-1 active:shadow-none transition-all duration-200 -mr-4 z-10"
         >
-          <ChevronRight size={20} className="text-gray-700" />
+          <ChevronRight size={24} strokeWidth={3} className="text-neo-black" />
         </button>
       </div>
 
